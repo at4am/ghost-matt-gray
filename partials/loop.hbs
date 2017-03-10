@@ -1,0 +1,129 @@
+{{! Loop list of articles }}
+{{! NOT TAG LIST}}
+{{^is "tag"}}
+{{#get "posts" filter="featured:true" limit="4" as |featured|}}
+    {{#foreach featured}}
+    <div class="article col s12 m6 l4">
+        <div class="card">
+            <a href="{{url}}">
+                {{! Article Features Figure }}
+                <div class="card-image">
+                    {{#if image}}
+                    <img src="{{image}}" class="responsive-img" alt="{{title}}">
+                    {{else}}
+                    <img src="{{asset "images/PORTWINGS_XS_AB1_REV.jpg"}}" alt="{{title}}">
+                    {{/if}}
+                    <span class="card-title">
+                        <span class="highlightme-articles featured">
+                            <span class="ghost_title_text"> 
+                                {{title}} 
+                            </span>
+                        </span>
+                    </span>
+                </div>
+            </a>
+        </div>
+    </div>
+    {{/foreach}}
+{{/get}}
+{{#foreach posts}}
+<div class="article col s12 m6 l4">
+    <div class="card">
+        <a href="{{url}}">
+            {{! Article Features Figure }}
+            <div class="card-image">
+                {{#if image}}
+                <img src="{{image}}" class="responsive-img" alt="{{title}}">
+                {{else}}
+                <img src="{{asset "images/PORTWINGS_XS_AB1.jpg"}}" alt="{{title}}">
+                {{/if}}
+                <span class="card-title"><span class="highlightme-articles"><span class="ghost_title_text"> {{title}} </span></span></span>
+            </div>
+            <div class="card-content article-content">
+                <p>{{excerpt characters="120"}}</p>
+                <ul>
+                    <li>
+                        <a class="bf-text-gray">
+                            <i class="fa fa-clock-o fa-fw"></i> {{date published_at timeago="true"}}
+                        </a>
+                    </li>
+                    <li>
+                        {{#author}}
+                        <a href="{{url}}" target="_blank" class="bf-text-white">
+                            <i class="fa fa-leaf fa-fw"></i> {{name}}
+                        </a>
+                        {{/author}}
+                    </li>
+                </ul>
+            </div>
+            {{! Article Tags }}
+            {{#if tags}}            
+            <div class="card-action article-tags">
+                {{#foreach tags}}
+                <a href="{{url}}">
+                    <span class="chip bf-color">{{name}}</span>
+                </a>
+                {{/foreach}}
+            </div>
+            {{/if}}            
+        </a>
+    </div>
+</div>
+{{/foreach}}
+{{else}}
+{{! TAG IMAGE}}
+{{#if tag.image}}
+<div class="article col s12 m6 l4">
+    <div class="card">
+            <div class="card-image">
+                <img src="{{tag.image}}" class="responsive-img" alt="{{title}}">
+            </div>        
+    </div>
+</div>
+{{/if}}   
+{{! TAG RELATED POSTS}}
+{{#foreach posts}}
+<div class="article col s12 m6 l4">
+    <div class="card">
+        <a href="{{url}}">
+            {{! Article Features Figure }}
+            <div class="card-image">
+                {{#if image}}
+                <img src="{{image}}" class="responsive-img" alt="{{title}}">
+                {{else}}
+                <img src="{{asset "images/PORTWINGS_XS_AB1.jpg"}}" alt="{{title}}">
+                {{/if}}
+                <span class="card-title"><span class="highlightme-articles"><span class="ghost_title_text"> {{title}} </span></span></span>
+            </div>
+            <div class="card-content article-content">
+                <p>{{excerpt characters="120"}}</p>
+                <ul>
+                    <li>
+                        <a class="bf-text-gray">
+                            <i class="fa  fa-clock-o fa-fw"></i> {{date published_at timeago="true"}}
+                        </a>
+                    </li>
+                    <li>
+                        {{#author}}
+                        <a href="{{url}}" target="_blank" class="bf-text-white">
+                            <i class="fa fa-leaf fa-fw"></i> {{name}}
+                        </a>
+                        {{/author}}
+                    </li>
+                </ul>
+            </div>
+            {{! Article Tags }}
+            {{#if tags}}
+            <div class="card-action article-tags">
+                {{#foreach tags}}
+                <a href="{{url}}">
+                    <span class="chip bf-color">{{name}}</span>
+                </a>
+                {{/foreach}}
+            </div>
+            {{/if}}
+        </a>
+    </div>
+</div>
+{{/foreach}}
+{{/is}}

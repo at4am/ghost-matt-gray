@@ -1,0 +1,101 @@
+{{!< default}}
+
+{{! The head of the page}}
+{{> header}}
+{{! main content}}
+<main class="content">
+    {{! Head Fusion Background title}}
+    <div class="content-heading bf-color">
+        <div class="container">
+            <div class="row">
+                {{^is "tag"}}                
+                <div class="col s12 m12 l12">
+                    <h3 class="heading-home">
+                        {{#if @blog.description}}
+                        <span class="highlightme"> {{@blog.description}} </span>
+                        {{/if}}   
+                    </h3>
+                </div>
+                {{else}}
+                <div class="col s8 m9 l9">
+                    <h3 class="heading"><span class="highlightme"> {{tag.name}} </span></h3>
+                    <h5><span id="share-url" data-url="{{url absolute="true"}}">{{url absolute="true"}}</span></h5>
+                </div>
+                <div class="col s4 m3 l3">                    
+                    <div id="share-qr"></div>
+                </div>
+                <div class="col s12 m12 l12">
+                    <span>
+                        <a class="chip icon-twitter" title="Share with Twitter" href="https://twitter.com/intent/tweet?text={{encode title}}&amp;url={{url absolute="true"}}"
+                            onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                        <i class="fa fa-twitter"></i>
+                        </a>
+                        <a class="chip icon-facebook" title="Share with Facebook" href="https://www.facebook.com/sharer/sharer.php?u={{url absolute="true"}}"
+                            onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                        <i class="fa fa-facebook"></i>
+                        </a>
+                        <a class="chip icon-google-plus" title="Share with Google Plus" href="https://plus.google.com/share?url={{url absolute="true"}}"
+                        onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                        <i class="fa fa-google-plus"></i>
+                        </a>
+                        {{! Disabling Email Obfuscation by Cloudflare partially }}
+                        <!--email_off-->
+                        <a class="chip icon-envelope" title="Share with Email" 
+                        href="mailto:?subject=관심 태그 공유 at {{@blog.url}}&amp;body=관심있는 주제를 공유합니다. {{encode tag.name}} - {{url absolute="true"}}">
+                        <i class="fa fa-envelope"></i>
+                        </a>                        
+                        <!--/email_off-->              
+                        <a href="http://cloud.feedly.com/#subscription/feed/{{@blog.url}}/tag/{{{tag.slug}}}/rss/" class="chip">Feedly로 구독하기</a>
+                    </span> 
+                </div>
+                {{/is}}                 
+            </div>
+        </div>
+    </div>
+
+    {{! Head reminder Content}}
+    {{^is "tag"}}
+    <!--<div class="container notice">
+        <div class="card">
+            <div class="card-content">
+            {{!> advertise}}
+            </div>
+        </div>
+    </div>-->
+    {{/is}}
+
+    {{! All articles Cards}}
+    <article id="articles" class="container articles">
+        <div class="row article-row">
+            {{! Cycle Articles}}
+            {{> loop}}
+        </div>
+    </article>
+    {{! Tab bar }}
+    {{ pagination}}
+</main>
+{{! Tag List and ETC}}
+{{^is "tag"}}
+<div class="container row notice">
+    <div class="col s12 m12 l6">    
+        <div class="card">
+            <div class="card-content">
+               {{> advertise}}
+            </div>
+        </div>         
+    </div>      
+    <div class="col s12 m12 l6">
+        <div class="card">
+            <div class="card-content"> 상위 태그
+                <div id="tags" class="tags">
+                    {{#get "tags" limit="20" include="count.posts" order="count.posts desc"}}
+                        {{#foreach tags}}
+                            <a href="{{url}}"><span class="bottom-tag-chip bf-tag-color">{{name}}[{{count.posts}}]</span></a>
+                        {{/foreach}}
+                    {{/get}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{/is}}

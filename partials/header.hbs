@@ -1,0 +1,19 @@
+{{! Header Content}}
+<header class="navbar-fixed">
+    <nav id="headNav" class="bf-head-color none-shadow">
+        <div id="navContainer" class="container">
+            <div class="nav-wrapper">
+                <div class="brand-logo ">
+                    <a href="{{@blog.url}}" class="waves-effect waves-light typewrite" data-period="2000" data-type='[ "{{@blog.title}}" ]'>
+                        {{#if @blog.logo}}
+                        <img src="{{@blog.logo}}" class="logo-img hide-on-small-only">
+                        {{/if}}
+                        <span class="logo-span wrap"></span>
+                    </a>
+                </div>
+                {{! Navigation menu }}
+                {{navigation}}
+            </div>
+        </div>
+    </nav>
+</header>

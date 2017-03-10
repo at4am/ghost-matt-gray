@@ -1,0 +1,41 @@
+<!-- Back to top button -->
+<div class="top-scroll">            
+    {{^is "post"}}
+    <div class="row">
+        <a title="To the bottom of page" id="backBottom" class="btn-floating bf-head-color waves-effect waves-light" href="#!">
+            <i class="fa fa-arrow-down"></i>
+        </a>
+         <a title="To the top of page" id="backTop" class="btn-floating backTop-home bf-head-color waves-effect waves-light" href="#!">
+            <i class="fa fa-arrow-up"></i>
+        </a>        
+    </div>                      
+    {{else}}
+    {{#post}}      
+    <div class="row">
+    <a title="To the top of page" id="backTop" class="btn-floating backTop-post bf-head-color waves-effect waves-light" href="#!">
+        <i class="fa fa-arrow-up"></i>
+    </a>
+    </div>
+    <div class="row">
+    {{#prev_post}}  
+    <a title="Previous Post" id="backLast" class="btn-floating bf-head-color waves-effect waves-light" href="{{url}}">
+        <i class="fa fa-angle-double-left"></i>
+    </a>    
+    <a title="To the bottom of page" id="backBottom" class="btn-floating bf-head-color waves-effect waves-light" href="#!">
+        <i class="fa fa-arrow-down"></i>
+    </a>    
+    {{/prev_post}} 
+    {{#next_post}}  
+    <a title="Next Post" id="backRecent" class="btn-floating bf-head-color waves-effect waves-light" href="{{url}}">
+        <i class="fa fa-angle-double-right"></i>
+    </a> 
+    {{/next_post}}
+    {{^prev_post}}
+    <a title="To the bottom of page" id="backBottom" class="btn-floating bf-head-color waves-effect waves-light" href="#!">
+        <i class="fa fa-arrow-down"></i>
+    </a>   
+    {{/prev_post}}
+    </div>
+    {{/post}}               
+    {{/is}}        
+</div>

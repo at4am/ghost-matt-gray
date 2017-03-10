@@ -1,0 +1,47 @@
+<a href="#" data-activates="mobile-nav" class="button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    {{#if @blog.navigation}}
+        {{#foreach navigation}}
+        <li class="hide-on-med-and-down">
+            <a href="{{url absolute="true"}}" class="head-menu waves-effect waves-light">{{label}}</a>
+        </li>
+        {{/foreach}}
+    {{else}}
+        <li class="hide-on-med-and-down">
+            <a href="{{@blog.url}}" class="head-menu waves-effect waves-light">Home</a>
+        </li>
+    {{/if}}
+    <li>
+	<a id="toggle-search" class="head-menu waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search"></i>
+        </a>
+    </li>
+</ul>
+<div class="side-nav" id="mobile-nav">
+    <div class="mobile-head bf-head-color">
+	 <img alt="logohat.png" src="{{asset "images/logohat.png"}}" class="logo-img circle responsive-img">
+        <div class="logo-name">{{@blog.title}}</div>
+    </div>
+    <ul class="menu-list">
+        {{#if @blog.navigation}}
+            {{#foreach navigation}}
+            <li>
+                <a href="{{url absolute="true"}}" class="waves-effect waves-light">
+                   {{label}}
+                </a>
+            </li>
+            {{/foreach}}
+        {{else}}
+            <li>
+                <a href="{{@blog.url}}" class="waves-effect waves-light">
+                    <i class="fa fa-home fa-lg fa-fw"></i>Home
+                </a>
+            </li>
+        {{/if}}  
+    </ul>
+    <div class="social-link">
+       <a href="{{@blog.url}}/rss/" class="tooltipped" data-tooltip="RSS" target="_blank" data-position="top" data-delay="50">
+            <i class="fa fa-rss fa-lg" aria-hidden="true"></i>
+        </a>                 
+    </div>
+</div>

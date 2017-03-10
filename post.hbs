@@ -1,0 +1,155 @@
+{{!< default}}
+
+{{! main content}}
+{{> header_detail}}
+
+{{! main content}}
+<main class="content">
+    {{! Article Content }}
+    {{#post}}
+    {{! Head Fusion Background title}}
+    <div class="content-heading bf-color">
+        <div class="container">
+            <div class="row">
+                <div class="col s8 m9 l9">
+                    <h3 class="heading"><span class="highlightme"> {{title}} </span></h3>
+                    <h5><span id="share-url" data-url="{{url absolute="true"}}">{{url absolute="true"}}</span></h5>
+                </div>
+                <div class="col s4 m3 l3">                    
+                    <div id="share-qr"></div>
+                </div>                
+            </div>
+        </div>
+    </div>        
+    {{! Article Content details}}
+    <div id="artDetail" class="container notice">
+        <div class="card">
+            <div class="card-content">
+                {{#if tags}}
+                <div class="article-tag">
+                    {{#foreach tags}}
+                    <a href="{{url}}"><span class="chip bf-color">{{name}}</span></a>
+                    {{/foreach}}
+                </div>
+                {{/if}}
+                <div class="author-info">
+                    <span>
+                        <a class="bf-text-gray">
+                            <i class="fa fa-clock-o fa-fw"></i> {{date published_at format="MM/DD/YYYY"}}
+                        </a>
+                    </span>
+                    <span>
+                        {{#author}}
+                        <a class="bf-text-gray">
+                            <i class="fa fa-leaf fa-fw"></i> {{name}}
+                        </a>
+                        {{/author}}
+                    </span>
+                    <span>
+                        <i class="fa fa-book fa-fw"></i>
+                        <a class="post-reading-time bf-text-gray">
+                        </a>                        
+                    </span>
+                    <span class="sharebox">
+                        Share with:
+                        <a class="chip icon-twitter" title="Share with Twitter" href="https://twitter.com/intent/tweet?text={{encode title}}&amp;url={{url absolute="true"}}"
+                            onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                        <i class="fa fa-twitter"></i>
+                        </a>
+                        <a class="chip icon-facebook" title="Share with Facebook" href="https://www.facebook.com/sharer/sharer.php?u={{url absolute="true"}}"
+                            onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                        <i class="fa fa-facebook"></i>
+                        </a>
+                        <a class="chip icon-google-plus" title="Share with Google Plus" href="https://plus.google.com/share?url={{url absolute="true"}}"
+                        onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                        <i class="fa fa-google-plus"></i>
+                        </a>
+                        {{! Disabling Email Obfuscation by Cloudflare partially }}
+                        <!--email_off-->
+                        <a class="chip icon-envelope" title="Share with Email" 
+                        href="mailto:?subject=포스팅 공유 at {{@blog.url}}&amp;body=관심있는 포스팅을 공유합니다. {{encode title}} - {{url absolute="true"}}">
+                        <i class="fa fa-envelope"></i>
+                        </a>                        
+                        <!--/email_off-->
+                        <a href="javascript:window.print()" title="Print This Post" class="chip btn-print">
+                                <i class="fa fa-print"></i>
+                        </a>                      
+                        <!--
+                        <a href="http://cloud.feedly.com/#subscription/feed/{{@blog.url}}/rss/" class="chip">Feedly</a>
+                        -->
+                    </span>                      
+                </div>
+            </div>  
+            <div class="card-content article-card-content">
+                <div id="articleContent">
+                    {{{content}}}
+                </div>
+                <br> 
+            </div>                
+	    </div>
+        {{! Previous and Next function }}
+        <div class="prenext-card card">
+            <div class="prenext-row row">
+                <div class="prenext col s12 m6 l6">
+                    {{#prev_post}}
+                    <p class="pn-title"><span class="pn-title-text"><i class="fa fa-long-arrow-left"></i> 이전 포스팅</span></p>
+                    <div class="pn-content-left">
+                        <a class="prenext-link bf-text-color" href="{{url}}">{{title}}</a>
+                    </div>
+                    {{/prev_post}}
+                </div>
+                <div class="prenext col s12 m6 l6">
+                    {{#next_post}}
+                    <p class="pn-title pn-title-right"> <span class="pn-title-text">다음 포스팅 <i class="fa fa-long-arrow-right"></i></span></p>
+                    <div class="pn-content-right">
+                        <a class="prenext-link bf-text-color" href="{{url}}">{{title}}</a>
+                    </div>
+                    {{/next_post}}
+                </div>
+            </div>
+        </div>
+        {{! Comment System }}
+        <!--<div class="card">-->
+            {{! for isso comment system }}
+            <!--<div class="card-content">-->
+                {{!#is "post, page"}}
+                {{! If your isso config is not on the same domain as your blog, you need to include data-isso variable }}
+                <!--<script data-isso="/comments/" src="/comments/js/embed.min.js"></script>-->
+                <!--<section id="isso-thread"></section>-->
+                {{!/is}}                    
+            <!--</div>-->
+            {{! for disqus comment system }}
+            <!--
+            <div class="card-content">
+                <div id="disqus_thread"></div>
+                <script type="text/javascript">
+                var disqus_shortname = ''; // required: replace example with your forum shortname
+                var disqus_identifier = '{{post.id}}';
+                /* * * DON'T EDIT BELOW THIS LINE * * */
+                (function() {
+                        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+                </script>
+                <noscript><a href="https://disqus.com/?ref_noscript">Disqus 시스템</a>에는 자바스크립트가 필요합니다. 자바스크립트를 활성화 해주세요.</noscript>
+                <a href="https://disqus.com" class="dsq-brlink"><span class="logo-disqus">Disqus 시스템 로딩중</span></a>                    
+            </div>
+            -->
+        <!--</div>-->
+        {{!-- Email subscribe form at the bottom of the page --}}
+        {{!#if @labs.subscribers}}
+        <!--
+        <div class="card">
+            <div class="card-content">
+                <h5> 블로그 포스팅 구독(이메일) </h5>
+                <p>{{@blog.title}} 블로그의 최신 포스트를 이메일을 통해 구독하세요. 아래에 이메일 주소를 입력 후, Subscribe를 눌러주세요.</p>
+                {{subscribe_form placeholder="구독할 이메일 주소"}}
+            </div>
+        </div>
+        -->   
+        {{!/if}}             
+        </div>
+	</div>   
+</main>                  
+{{/post}}

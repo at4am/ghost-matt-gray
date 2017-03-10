@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko" class="loading">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<title>{{meta_title}}</title>
+<meta name="description" content="{{meta_description}}">
+<meta name="HandheldFriendly" content="True" />
+<meta name="format-detection" content="telephone=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Chrome, Firefox OS and Opera -->
+<meta name="theme-color" content="#304f56">
+<!-- Windows Phone -->
+<meta name="msapplication-navbutton-color" content="#304f56">
+<!-- iOS Safari -->
+<meta name="apple-mobile-web-app-status-bar-style" content="#304f56">
+<link rel="shortcut icon" href="{{asset "images/favicon.ico"}}">
+<!--[if lt IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+<![endif]-->
+<!--<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css" />-->
+<link type="text/css" rel="stylesheet" href="{{asset "css/font-awesome.min.css"}}">
+{{! import styles }}
+<link type="text/css" rel="stylesheet" href="{{asset "plugins/materialize/css/materialize.min.css"}}" />
+<!--<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css" />-->
+<!--<link type="text/css" rel="stylesheet" href="{{asset "css/screen.css"}}" />-->
+<link type="text/css" rel="stylesheet" href="{{asset "css/screen.min.css"}}" />
+{{! Ghost outputs important style and meta data with this tag }}
+{{ghost_head}}
+</head>
+<body>
+    {{{body}}}
+    {{! actual footer }}
+    {{> footer}}
+    {{! Search mask box }}
+    {{> search}}
+    {{! Back to top button }}
+    {{> back_top}}
+    {{! Ghost outputs important scripts and data with this tag }}
+    {{ghost_foot}}
+</body>
+
+{{! import jQuery before materialize.min.js }}
+<script>window.jQuery || document.write('<script src="{{asset "plugins/jquery/jquery-2.2.2.min.js"}}"><\/script>')</script>
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>-->
+<script type="text/javascript" src="{{asset "plugins/materialize/js/materialize.min.js"}}"></script>
+<!--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.1.1/masonry.pkgd.min.js"></script>-->
+<script type="text/javascript" src="{{asset "plugins/masonry/masonry.pkgd.min.js"}}"></script>
+{{! script for post searching}}
+<script type="text/javascript" src="{{asset "plugins/typeahead/typeahead.bundle.min.js"}}"></script>
+<!--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js"></script>-->
+{{! script for code highlighting}}
+<!--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js"></script>-->
+<script type="text/javascript" src="{{asset "plugins/ace-builds-master/src-min-noconflict/ace.js"}}"></script>
+<!--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>-->
+<script type="text/javascript" src="{{asset "plugins/jquery-qrcode/jquery.qrcode.min.js"}}"></script>
+<script type="text/javascript" src="{{asset "js/index.min.js"}}"></script>
+</html>
