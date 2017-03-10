@@ -1,9 +1,9 @@
 ### 소개
 
-[matt-gray] [1] 는 [matery2] [2] 기반의 [ghost] [3] 블로그 테마로 [개인적인 블로그] [4] 테마로 사용되고 있습니다.
+[matt-gray][1] 는 [matery2][2] 기반의 [ghost][3] 블로그 테마로 [개인적인 블로그][4] 테마로 사용되고 있습니다.
 
 ### 기능
-[matery2] [2] 의 주요 기능을 기반으로, 블로그의 실제 사용에 맞게 수정되었습니다. 수정으로 도입된 기능은 다음과 같습니다. 이외의 기능은 [matery2] [2] 와 동일합니다.
+[matery2][2] 의 주요 기능을 기반으로, 블로그의 실제 사용에 맞게 수정되었습니다. 수정으로 도입된 기능은 다음과 같습니다. 이외의 기능은 [matery2][2] 와 동일합니다.
 
 * Featured 포스팅 활성화
 * 태그 별 페이지
@@ -22,6 +22,6 @@
 * `/partials/advertise.hbs` 파일을 수정해 공지사항이나, 개인적인 문구를 등록할 수 있습니다.
 
   [1]: https://github.com/at4am/ghost-matt-gray
-  [2]: https://github.com/blinkfox/ghost-matery2
+  [2]: https://github.com/blinkfox/ghost-matery2
   [3]: https://ghost.org
   [4]: https://4am.kr
