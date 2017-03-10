@@ -21,7 +21,7 @@
 * `post.hbs` 파일 수정을 통해 이메일 구독 기능 활성화와 댓글 기능 활성화가 가능합니다.
 * `/partials/advertise.hbs` 파일을 수정해 공지사항이나, 개인적인 문구를 등록할 수 있습니다.
 
-  [1]: https://github.com/at4am/ghost-matt-gray
-  [2]: https://github.com/blinkfox/ghost-matery2
-  [3]: https://ghost.org
-  [4]: https://4am.kr
+[1]: https://github.com/at4am/ghost-matt-gray
+[2]: https://github.com/blinkfox/ghost-matery2
+[3]: https://ghost.org
+[4]: https://4am.kr
